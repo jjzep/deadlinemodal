@@ -44,44 +44,62 @@ body {
   /* animation: jumpx 1000ms 67ms cubic-bezier(0.02, 0.41, 0.88, 0.52) alternate infinite both; */
 }
 
+@keyframes bounce {
+  0%, 22.5%, 75% {
+    transform: scale(1, 1);
+  }
+  19%, 71% {
+    transform: scale(1.22, .84);
+  }
+}
+
+.scale {
+  animation: bounce 933ms 370ms alternate infinite forwards;
+}
+
+
 .clock {
-  animation: jumpy 933ms 400ms cubic-bezier(0.04, 0, 0.06, 0.99) alternate infinite forwards;
+  animation: jumpy 933ms 400ms alternate infinite forwards;
 }
 
 @keyframes jumpx {
   0% {
     transform: translatex(-61px);
+    animation-timing-function: linear;
   }
-  26.7% {
+  26.8% {
     transform: translatex(-61px);
+    animation-timing-function: cubic-bezier(0.22, 0.16, 0.82, 0.82);
   }
   /* 50% {
     transform: translatex(0px);
   }  */
-  100% {
-    transform: translatex(61px);
-  }
-  100%{
+  73%, 100% {
     transform: translatex(61px);
   }
 }
 
 @keyframes jumpy {
+  /* 19%, 71% {
+    transform: scale(1.22, .84);
+    animation-duration: 30ms;
+    animation-iteration-count: 1;
+  } */
+  
   0% {
     transform: translateY(0px);
+    animation-timing-function: linear;
   }
-  26.7% {
+  26.8% {
     transform: translateY(0px);
+    animation-timing-function: cubic-bezier(0.04, 0, 0.06, 0.99);
   }
-  50% {
+  51.6% {
     transform: translatey(-70px);
     animation-timing-function: cubic-bezier(0.88, 0.05, 0.86, 0.59);
   }
-  73.2% {
-    transform: translaty(0px);
-  }
-  100% {
-    transform: translaty(0px);
+  73%, 100% {
+    transform: translatey(0px);
   }
 }
 
@@ -151,25 +169,31 @@ body {
 }
 } */
 
-.shadow {
+/*Still have to solve the SVG Zindex issue*/
+#shadow {
+  width: 80px;
   display: block;
-  margin: 0 auto; 
-  animation: trophybounce 750ms cubic-bezier(0.215, 0.610, 0.355, 1.000),
-  shadow 1.5s 750ms ease-out infinite forwards alternate;
+  margin: -10px auto 0 auto; 
+  animation: shadow 933ms 400ms infinite forwards alternate;
 }
 
 @keyframes shadow {
   0% {
-    transform: scale(1,1);
+    transform: scale3d(1,1,1);
+    animation-timing-function: linear;
   }
-  50% {
-    transform: scale(0.9,0.9);
+  26.8% {
+    transform: scale3d(1, 1, 1);
+    animation-timing-function: cubic-bezier(0.04, 0, 0.06, 0.99);
   }
-  100% {
-    transform: scale(1,1);
+  51.6% {
+    transform: scale3d(0.65, .85, .9);
+    animation-timing-function: cubic-bezier(0.88, 0.05, 0.86, 0.59);
   }
-} 
-
+  73%, 100% {
+    transform: scale3d(1, 1, 1);
+  }
+}
   header {
   /*   display: flex; */
   /*   margin: auto auto auto 50%; */
