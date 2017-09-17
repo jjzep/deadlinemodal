@@ -11,7 +11,6 @@ body {
     display: grid;
     grid-column: 2 / 3;
     margin-top: 2rem; 
-    /* height: 400px; */
     width: 600px;
     border: 1px solid #EAEAEA;
     border-radius: 15px;
@@ -20,7 +19,7 @@ body {
   }
 
   .close-btn {
-      margin: 1rem 2rem auto auto; /*Margin it spilling over to the shadow area for some reason, so I made it 2rem.*/
+      margin: 1rem 2rem auto auto;
   }
 
 .anim, .background {
@@ -45,42 +44,14 @@ body {
 .clockx {
   transform: translatex(-61px);
   animation: jumpx 933ms 400ms cubic-bezier(0.22, 0.16, 0.82, 0.82) alternate infinite both;
-  /* animation: jumpx 1000ms 67ms cubic-bezier(0.02, 0.41, 0.88, 0.52) alternate infinite both; */
 }
 
-/* @keyframes bounce {
-  0%, 22.5%, 75% {
-    transform: scale(1, 1);
-  }
-  19%, 71% {
-    transform: scale(1.22, .84);
-  }
-} */
-
 @keyframes bounce {
-  0%, { 
+  0%, 9.6%, 26.8%, 73%, 90.2%, 100% { 
     transform: scale(1, 1);
   }
-  9.6% {
-    transform: scale(1, 1);
-  }
-  20.1% {
+  20.1%, 79.7% {
     transform: scale(1.22, .84);
-  }
-  26.8% {
-    transform: scale(1, 1);
-  }
-  73% {
-    transform: scale(1, 1);
-  } 
-  79.7% {
-    transform: scale(1.22, .84);
-  }
-  90.2% {
-    transform: scale(1, 1);
-  }
-  to {
-    transform: scale(1, 1);
   }
 }
 
@@ -94,6 +65,32 @@ body {
   animation: jumpy 933ms 400ms alternate infinite forwards;
 }
 
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.hand1, .hand2 {
+  position: relative;
+  top: -31px;
+  transform-origin: bottom;
+}
+
+.hand1 {
+  left: -37px;
+  height: 19px;
+  width: 3px;
+  animation: rotate 1500ms 400ms linear infinite forwards;
+}
+
+.hand2 {
+  left: -44px;
+  height: 16px;
+  width: 3px;
+  animation: rotate 2500ms 400ms linear infinite forwards;
+}
+
 @keyframes jumpx {
   0% {
     transform: translatex(-61px);
@@ -103,21 +100,12 @@ body {
     transform: translatex(-61px);
     animation-timing-function: cubic-bezier(0.22, 0.16, 0.82, 0.82);
   }
-  /* 50% {
-    transform: translatex(0px);
-  }  */
   73%, 100% {
     transform: translatex(61px);
   }
 }
 
 @keyframes jumpy {
-  /* 19%, 71% {
-    transform: scale(1.22, .84);
-    animation-duration: 30ms;
-    animation-iteration-count: 1;
-  } */
-  
   0% {
     transform: translateY(0px);
     animation-timing-function: linear;
@@ -134,74 +122,6 @@ body {
     transform: translatey(0px);
   }
 }
-
-/* @keyframes jumpy {    BACKUP
-  25% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translatey(-79px);
-  }
-  75% {
-    transform: translaty(0px);
-  }
-} */
-
- /* .trophy {
-    width: 150px;
-    height: 270px;
-    transform: scale(1.1483,1.1451); 
-    animation: trophybounce 750ms cubic-bezier(0.215, 0.610, 0.355, 1.000),
-      trophyhover 1.5s 750ms ease-out infinite forwards alternate;
-  }
-
-@keyframes trophybounce {
-  from, 20%, 40%, 60%, 80%, to {
-    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
-  }
-
-  0% {
-    opacity: 0;
-    transform: scale3d(.3, .3, .3);
-  }
-
-  20% {
-    transform: scale3d(1.1, 1.1, 1.1);
-  }
-
-  40% {
-    transform: scale3d(.9, .9, .9);
-  }
-
-  60% {
-    opacity: 1;
-    transform: scale3d(1.03, 1.03, 1.03);
-  }
-
-  80% {
-    transform: scale3d(.97, .97, .97);
-  }
-
-  to {
-    opacity: 1;
-    transform: scale3d(1, 1, 1);
-  }
-}
-@keyframes trophyhover {
-  0% {
-  transform: translateY(0px);
-}
-
-50% {
-  transform:  translateY(-8px);
-}
-
-100% {
-  transform:  translateY(0px);
-}
-} */
-
-/*Still have to solve the SVG Zindex issue*/
 
 #shadex {
   transform: translateY(67px);
@@ -232,10 +152,7 @@ body {
   }
 }
   header {
-  /*   display: flex; */
-  /*   margin: auto auto auto 50%; */
-  /*   margin: 2.5rem 4rem 1rem; */
-     padding: 25px 0 15px 0; /*Used instead of the above margin rules, as well as the modal height rule*/
+     padding: 25px 0 15px 0;
     text-align: center;
     font-family: 'Nunito', sans-serif;
     font-size: 32pt;
@@ -263,91 +180,6 @@ body {
   }
 }
   
-
-@keyframes sparkle {
-  0% {
-    transform: scale3d(0,0,0) rotate(0deg);  
-  }
-  30% {
-    transform: scale3d(1,1,1) rotate(50deg);
-    /* rotate(); */
-  }
-  60% {
-    transform: scale3d(0,0,0) rotate(100deg);
-  }
-  100% {
-    transform: scale3d(0,0,0) rotate(100deg);
-  }
-}
-
-@keyframes bigsparkle {
-  0% {
-    transform: scale3d(0,0,0) rotate(0deg);  
-  }
-  20% {
-    transform: scale3d(1.5,1.5,1.5) rotate(50deg);
-    /* rotate(); */
-  }
-  40% {
-    transform: scale3d(0,0,0) rotate(100deg);
-  }
-  100% {
-    transform: scale3d(0,0,0) rotate(100deg);
-  }
-}
-
-.star1, .star2, .star3, .star4, .star5, .star6, .star7 {
-  position: relative;
-  transform: scale3d(0,0,0);
-}
-
-.star1 {
-  top: 20px;
-  left: 10px;
-  animation: sparkle 1.5s 1200ms infinite forwards;
-}
-
-.star2 {
-  top: 150px;
-  left: -90px;
-  animation: bigsparkle 2s 1600ms infinite forwards;
-}
-
-.star3 {
-  top: 100px;
-  left: 135px;
-  animation: bigsparkle 2s 2000ms infinite forwards;
-}
-
-.star4 {
-  top: 74px;
-  left: -15px;
-  animation: sparkle 1.5s 1s infinite forwards;
-}
-
-.star5 {
-  top: 240px;
-  left: 70px;
-  animation: sparkle 1.5s 1400ms infinite forwards;
-}
-
-.star6 {
-  top: 200px;
-  left: -90px;
-  animation: sparkle 1.5s 2200ms infinite forwards;
-}
-
-.star7 {
-  top: 40px;
-  left: -20px;
-  animation: sparkle 1.5s 2200ms infinite forwards;
-}
-
-.star1, .star2, .star3, .star4, .star5, .star6, .star7 {
-  position: relative;
-  transform: scale3d(0,0,0);
-}
-
   section.text {
     margin: auto;
     font-family: 'Noto Sans', sans-serif;
@@ -367,12 +199,10 @@ body {
   }
 
   footer input {
-    /* Rectangle: */
     outline: none;
     text-decoration: none;
     background: #C17EFE;
     border: none;
-    /* Done: */
     font-family: DINNextLTPro-Regular;
     font-size: 16px;
     color: #FFFFFF;
